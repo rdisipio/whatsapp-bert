@@ -27,4 +27,4 @@ class IntentClassifier(tf.keras.Model):
         encoded = self.tokenizer.encode(plain_text)
 
         _, pooled_output = self.bert(encoded, **kwargs)
-        return pooled_output
+        return pooled_output.numpy()

@@ -70,7 +70,7 @@ class Engine:
 
     def make_intents_embeddings(self):
         embeddings = self.model.get_embedding(self.known_intents)
-        self.intents_embeddings = {k: emb.numpy() for k, emb in zip(self.known_intents, embeddings) }
+        self.intents_embeddings = {k: emb for k, emb in zip(self.known_intents, embeddings) }
         print(self.known_intents)
 
     def tokenize_data(self):
