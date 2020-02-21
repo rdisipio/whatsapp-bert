@@ -3,10 +3,12 @@ from transformers import TFBertModel
 
 from tensorflow.keras.layers import Dropout, Dense
 
-class IntentClassifier():
+class IntentClassifier(tf.keras.Model):
     def __init__(self, n_intents,
                         dropout=0.2,
                         model_name="bert-base-cased"):
+        super().__init__(name="intent_classifier")
+
         self.bert = TFBertModel.from_pretrained(model_name)
         self.dropout = Dropout(dropout)
         self.intent_classifier = Dense(n_intents, activation='softmax')
