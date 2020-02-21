@@ -1,5 +1,6 @@
 tensorflow==2.1
 transformers
+tokenizers
 twilio
 flask
 requests

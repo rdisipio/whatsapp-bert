@@ -2,9 +2,17 @@ from flask import Flask, request
 import requests
 from twilio.twiml.messaging_response import MessagingResponse
 
+from tokenizer import Tokenizer
+from intent_classifier import IntentClassifier
+
 app = Flask(__name__)
 #app.config['SERVER_NAME'] = "127.0.0.1:4996"
 
+known_intents = [
+
+]
+
+intent_cls = IntentClassifier(n_intents=len(known_intents))
 
 @app.route('/', methods=['GET'])
 def hello():
