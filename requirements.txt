@@ -4,3 +4,4 @@ tokenizers
 twilio
 flask
 requests
+sklearn
