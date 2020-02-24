@@ -9,6 +9,8 @@ class Tokenizer:
         self.tokenizer = BertWordPieceTokenizer(self.vocabulary_path)
     
     def encode(self, plain_text: list, max_length=100):
+        """Use encode_plus instead?
+        """
         token_ids = np.zeros(shape=(len(plain_text), max_length), dtype=np.int32)
 
         for i, text in enumerate(plain_text):
