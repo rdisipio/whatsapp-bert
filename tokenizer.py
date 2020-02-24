@@ -2,7 +2,7 @@ from tokenizers import BertWordPieceTokenizer
 import numpy as np
 
 class Tokenizer:
-    def __init__(self, bert_model = "bert-base-cased"):
+    def __init__(self, bert_model = "bert-base-uncased"):
         self.bert_model = bert_model
         self.vocabulary_path = "{}-vocab.txt".format(bert_model)
         print("Vocabulary for BERT model {}: {}".format(bert_model, self.vocabulary_path))

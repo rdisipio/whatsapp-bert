@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Dropout, Dense
 class IntentClassifier(tf.keras.Model):
     def __init__(self, n_intents=None,
                         dropout=0.2,
-                        model_name="bert-base-cased"):
+                        model_name="bert-base-uncased"):
         super().__init__(name="intent_classifier")
 
         self.tokenizer = Tokenizer()
