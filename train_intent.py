@@ -9,6 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from intent_classifier import IntentClassifier
 from tokenizer import Tokenizer
+from tensorflow.keras.utils import to_categorical
 
 logger = logging.getLogger(__name__)
 
@@ -56,8 +57,8 @@ class Engine:
 
         self.model = IntentClassifier(n_intents=self.n_intents)
         self.model.compile(optimizer='adam', 
-                            loss='sparse_categorical_crossentropy', 
-                            metrics=['sparse_categorical_accuracy'])
+                            loss='categorical_crossentropy', 
+                            metrics=['categorical_accuracy'])
         X, y = self.make_training_dataset(self.data)
         print(X["input_ids"].shape, X['attention_masks'].shape, y.shape)
         self.model.train_on_batch(X, y)
@@ -97,6 +98,7 @@ class Engine:
             'attention_masks': np.array([x['nlu']['attention_masks'] for x in batch])
         }
         y = np.array([x['nlu']['label'] for x in batch], dtype=np.int64)
+        y = to_categorical(y)
         return X, y
 
     def write_out(self):

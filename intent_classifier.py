@@ -25,6 +25,7 @@ class IntentClassifier(tf.keras.Model):
 
     def get_embedding(self, plain_text, **kwargs):
         encoded = self.tokenizer.encode(plain_text)
+        print(">> encoded", encoded)
 
         _, pooled_output = self.bert(encoded, **kwargs)
         return pooled_output.numpy()
